@@ -28,6 +28,7 @@ import { HeaderComponent } from './components/dashboard/header/header.component'
 import { SideBarComponent } from './components/dashboard/side-bar/side-bar.component';
 import { FooterComponent } from './components/dashboard/footer/footer.component';
 import { TabPanesComponent } from './components/dashboard/tab-panes/tab-panes.component';
+import { PopupComponent } from './shared/popup/popup.component';
 
 
 @NgModule({
@@ -51,7 +52,8 @@ import { TabPanesComponent } from './components/dashboard/tab-panes/tab-panes.co
     HeaderComponent,
     SideBarComponent,
     FooterComponent,
-    TabPanesComponent    
+    TabPanesComponent,
+    PopupComponent    
   ],
   imports: [
     AppRoutingModule,
