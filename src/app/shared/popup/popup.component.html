@@ -14,15 +14,30 @@
           <button type="button" class="close" data-dismiss="modal">&times;</button>
         </div>
 
-        <div class="modal-body">{{body}}</div>
+        <div class="modal-body" *ngIf="!activeList">{{body}}</div>
+        <div class="modal-body" *ngIf="activeList">
+          <div class="list-group" width="auto" id="list-tab" role="tablist">
+            <a *ngFor="let selOfList of listSelect"
+            class="list-group-item"
+            [class.active]="clicked === selOfList"
+            id="list-home-list"
+            (click)="clicked = (clicked === selOfList ? null :selOfList)"
+            >
+            {{selOfList}}
+          </a>
+        </div>
 
         <!-- Acá pones los botones Modal footer -->
         <div class="modal-footer">
-          <button type="button" class="btn btn-primary" data-dismiss="modal">Aceptar</button>
-          <button type="button" class="btn btn-danger" data-dismiss="modal">Cerrar</button>
-        </div>
+          <span class="d-inline-block" tabindex="0" data-toggle="tooltip"
+          [title]="btnAceptar.disabled ? 'Debe seleccionar un valor de la lista' : 'continuar'">
+          <!-- title="Disabled tooltip"> -->
+          <button type="button" [disabled]="clicked === selOfList" #btnAceptar class="btn btn-primary" data-dismiss="modal">Aceptar</button>
+        </span>
+        <button type="button" class="btn btn-danger" data-dismiss="modal">Cerrar</button>
       </div>
     </div>
   </div>
+</div>
 
 </div>

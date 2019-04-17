@@ -1,8 +1,4 @@
 import { Component, OnInit, Input } from '@angular/core';
-// import { MDBBootstrapModulesPro } from 'ng-uikit-pro-standard';
-// import { MDBSpinningPreloader } from 'ng-uikit-pro-standard';
-// import { ModalComponent } from 'your-path-to-modal-component';
-
 
 @Component({
   selector: 'app-popup',
@@ -17,6 +13,8 @@ export class PopupComponent implements OnInit {
   body : string = '';
   footer : string = '';
 
+  activeList : boolean = false;
+
   constructor() { }
 
   ngOnInit() {
@@ -24,4 +22,7 @@ export class PopupComponent implements OnInit {
     this.body = this.bodyInput;
   }
 
+  listSelect : string []= ['Opcion uno', 'Opcion dos', 'Opcion tres','Opcion cuatro'];
 }
+
+// npm install --save popper.js angular-popper

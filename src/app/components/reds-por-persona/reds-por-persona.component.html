@@ -23,14 +23,16 @@
             <div class="box-header with-border">
               <h3 class="box-title">Ver REDs asignados por persona:</h3>
               <div class="">
-                <app-popup headingInput='mi header' bodyInput='acá lleno mi valor del body'></app-popup>
-              </div>
+                <app-popup headingInput='mi header'
+                           bodyInput='acá lleno mi valor del body'>
+              </app-popup>
             </div>
-            <div class="box-body">
-              <select class="form-control" id="selectorUsuario" (change)="onChangeUsuario($event.target.value)">
-                <option value="">--</option>
-                <option *ngFor="let usuario of usuarios" value="{{usuario.numeroIdentificacion}}">{{usuario.nombres}}
-                  {{usuario.apellidos}}</option>
+          </div>
+          <div class="box-body">
+            <select class="form-control" id="selectorUsuario" (change)="onChangeUsuario($event.target.value)">
+              <option value="">--</option>
+              <option *ngFor="let usuario of usuarios" value="{{usuario.numeroIdentificacion}}">{{usuario.nombres}}
+                {{usuario.apellidos}}</option>
               </select>
               <table class="table" *ngIf="valor">
                 <thead>
@@ -46,26 +48,26 @@
                     <td>{{asign.rol}}</td>
                     <td>
                       <button type="button" class="btn btn-primary" [routerLink]="['/red/' + asign.red.id + '/detalle']"
-                        routerLinkActive="router-link-active">
-                        <i class="fa fa-search"></i>&nbsp;
-                        Ver detalle
-                      </button>
-                    </td>
-                  </tr>
-                </tbody>
-              </table>
-              <span *ngIf="!valor">Seleccione un usuario para ver sus REDs asignados</span>
-            </div>
-            <!-- /.box-body -->
+                      routerLinkActive="router-link-active">
+                      <i class="fa fa-search"></i>&nbsp;
+                      Ver detalle
+                    </button>
+                  </td>
+                </tr>
+              </tbody>
+            </table>
+            <span *ngIf="!valor">Seleccione un usuario para ver sus REDs asignados</span>
           </div>
-          <!-- /.box -->
+          <!-- /.box-body -->
         </div>
-        <!-- /.box primary-->
+        <!-- /.box -->
       </div>
-      <!--/.col (left) -->
+      <!-- /.box primary-->
     </div>
-    <!-- /.row -->
-  </section>
-  <!-- /.content -->
+    <!--/.col (left) -->
+  </div>
+  <!-- /.row -->
+</section>
+<!-- /.content -->
 </div>
 <!-- /.content-wrapper -->
