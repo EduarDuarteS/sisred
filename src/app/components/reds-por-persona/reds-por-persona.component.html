@@ -23,8 +23,12 @@
             <div class="box-header with-border">
               <h3 class="box-title">Ver REDs asignados por persona:</h3>
               <div class="">
-                <app-popup headingInput='mi header'
-                           bodyInput='acá lleno mi valor del body'>
+                <button type="button" name="button" (click)=childPopup.showModal()>llamar popup</button>
+                <app-popup headingInput='mi header' #childPopup
+                           (popupOutput)=logSelect($event)
+                           bodyInput='acá lleno mi valor del body'
+                           activeListInput = true
+                           [listSelectInput]= listSelect>
               </app-popup>
             </div>
           </div>

@@ -1,43 +1,46 @@
 <div class="container">
-  <!-- Button to Open the Modal -->
+
+  <!-- Button to Open the Modal
   <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#myModal">
     Eduard modal
   </button>
+  <button type="button" (click)="showModal()" name="button"></button>
+  <a data-toggle="modal" data-target="#myModal">link</a>
+-->
 
   <!-- The Modal -->
-  <div class="modal" id="myModal">
+  <div class="modal" id="myModal" #modalEduard>
     <div class="modal-dialog">
       <div class="modal-content">
 
         <div class="modal-header">
-          <h4 class="modal-title">{{heading}}</h4>
+          <h4 class="modal-title">{{headingInput}}</h4>
           <button type="button" class="close" data-dismiss="modal">&times;</button>
         </div>
-
-        <div class="modal-body" *ngIf="!activeList">{{body}}</div>
-        <div class="modal-body" *ngIf="activeList">
-          <div class="list-group" width="auto" id="list-tab" role="tablist">
-            <a *ngFor="let selOfList of listSelect"
-            class="list-group-item"
-            [class.active]="clicked === selOfList"
-            id="list-home-list"
-            (click)="clicked = (clicked === selOfList ? null :selOfList)"
-            >
-            {{selOfList}}
-          </a>
+        <div *ngIf="!activeListInput">
+          <div class="modal-body">{{bodyInput}}</div>
+          <div class="modal-footer">
+            <button type="button" class="btn btn-primary" data-dismiss="modal">Aceptar</button>
+            <button type="button" class="btn btn-danger" data-dismiss="modal">Cerrar</button>
+          </div>
         </div>
+        <div class="modal-body" *ngIf="activeListInput">
+          <div class="list-group" width="auto" id="list-tab" role="tablist">
+            <a *ngFor="let selOfList of listSelectInput" class="list-group-item" [style.color]=" (clicked === selOfList) ? 'white' : 'black' "  [class.active]="clicked === selOfList" id="list-home-list" (click)="clicked = (clicked === selOfList ? null :selOfList)">
+              {{selOfList}}
+            </a>
+          </div>
 
-        <!-- Acá pones los botones Modal footer -->
-        <div class="modal-footer">
-          <span class="d-inline-block" tabindex="0" data-toggle="tooltip"
-          [title]="btnAceptar.disabled ? 'Debe seleccionar un valor de la lista' : 'continuar'">
-          <!-- title="Disabled tooltip"> -->
-          <button type="button" [disabled]="clicked === selOfList" #btnAceptar class="btn btn-primary" data-dismiss="modal">Aceptar</button>
-        </span>
-        <button type="button" class="btn btn-danger" data-dismiss="modal">Cerrar</button>
+          <!-- los botones Modal footer -->
+          <div class="modal-footer">
+            <span class="d-inline-block" tabindex="0" data-toggle="tooltip" [title]="!btnAceptar.disabled ? 'Continuar' : 'Debe seleccionar un valor de la lista'">
+              <!-- title="Disabled tooltip"> -->
+              <button type="button" [disabled]="clicked === selOfList" #btnAceptar class="btn btn-primary" (click)="clickAcepSelect(clicked)" data-dismiss="modal">Aceptar</button>
+            </span>
+            <button type="button" class="btn btn-danger" data-dismiss="modal">Cerrar</button>
+          </div>
+        </div>
       </div>
     </div>
-  </div>
-</div>
 
-</div>
+  </div>

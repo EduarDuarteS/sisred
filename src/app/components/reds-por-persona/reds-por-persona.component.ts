@@ -16,6 +16,14 @@ export class RedsPorPersonaComponent implements OnInit {
   asignFiltradas: RolAsignado[] = [];
   usuarios: Usuario[] = [];
   valor: string = '';
+// borrar
+  logSelect(display: string){
+    console.log(display)
+  };
+
+  listSelect : string []= ['Opcion uno', 'Opcion dos', 'Opcion tres','Opcion cuatro'];
+
+// hasta aca
 
   initUsuarios() {
     for (let asign of this.asignaciones) {

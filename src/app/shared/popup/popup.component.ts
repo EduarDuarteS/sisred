@@ -1,4 +1,5 @@
-import { Component, OnInit, Input } from '@angular/core';
+import { Component, OnInit, Input, ViewChild, ElementRef, Output, EventEmitter } from '@angular/core';
+declare let $: any;
 
 @Component({
   selector: 'app-popup',
@@ -6,23 +7,25 @@ import { Component, OnInit, Input } from '@angular/core';
   styleUrls: ['./popup.component.css']
 })
 export class PopupComponent implements OnInit {
+
   @Input() headingInput: string;
   @Input() bodyInput: string;
-  @Input() footerInput: string;
-  heading : string = '';
-  body : string = '';
-  footer : string = '';
+  @Input() activeListInput: boolean;
+  @Input() listSelectInput: string[];
 
-  activeList : boolean = false;
+  @Output() popupOutput = new EventEmitter();
+  @ViewChild('modalEduard') modal: ElementRef;
 
-  constructor() { }
-
-  ngOnInit() {
-    this.heading = this.headingInput;
-    this.body = this.bodyInput;
+  showModal() {
+    // Show modal with jquery
+    $(this.modal.nativeElement).modal('show');
+  }
+  clickAcepSelect(select: string) {
+    this.popupOutput.emit(select);
   }
 
-  listSelect : string []= ['Opcion uno', 'Opcion dos', 'Opcion tres','Opcion cuatro'];
+  constructor() { }
+  ngOnInit() { };
 }
 
 // npm install --save popper.js angular-popper
